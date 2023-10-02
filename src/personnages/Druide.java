@@ -18,7 +18,8 @@ public class Druide {
 	public String getNom() {
 		return nom;	
 	}
-
+	
+	
 	public void parler(String texte) {
 		// TODO Auto-generated method stub
 		System.out.println(prendreParole() + "<< " + texte + " >>");
@@ -35,7 +36,34 @@ public class Druide {
 		
 	}
 	
+	public void statut_potion(int force) {
+		if (force >= 7) {
+			parler("J'ai préparer une super potion de force");
+		}
+		else{
+			parler("Je n'ai pas trouvé tous les ingrédients, ma potion est seulement de force " + force + "...");
+		}
+		forcePotion = force;
+	}
+	
+	public void booster(Gaulois nomG) {
+		if (nomG.getNom() == "Obélix") {
+				parler("Non Obélix !... Tu n'auras pas de potion magique !");
+				nomG.parler("Par Bénélos, ce n'est pas juste !");
+		}
+		else nomG.boirePotion(forcePotion);
+		
+		
+	}
 	
 	
-
+	public static void main(String[] args) {
+		Druide panoramix = new Druide("Panoramix", 5, 10);
+		panoramix.parler("Salut c'est moi");
+		panoramix.statut_potion(panoramix.preparePotion());
+	}
+	
+	
+	
+	
 }
